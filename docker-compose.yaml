@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+  backend:
+    image: backend-for-mevn-stack
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend/:/usr/src/app
+    links:
+      - database
+
+  database:
+    image: mongo
+    ports:
+      - "27017:27017"
+
+  frontend:
+    image: frontend-for-mevn-stack
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./frontend/:/usr/src/app
